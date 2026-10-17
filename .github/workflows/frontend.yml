@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       ['frontend/**', 'workshop/**', 'server/src/**', 'server/package.json', '.github/workflows/frontend.yml']
+  workflow_dispatch:
   pull_request:
     paths:
       ['frontend/**', 'workshop/**', 'server/src/**', 'server/package.json', '.github/workflows/frontend.yml']
