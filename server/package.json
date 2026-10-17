@@ -1,0 +1,52 @@
+{
+  "name": "jotter-mcp",
+  "version": "0.1.0",
+  "description": "Jotter, a small MCP server for notes stored in a local JSON file. The example server for the Build Your Own MCP workshop.",
+  "license": "MIT",
+  "author": "Jishanahmed AR Shaikh",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jars-demo/build-your-mcp-demo.git",
+    "directory": "server"
+  },
+  "homepage": "https://buildyourmcp.jishanahmed.in",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "notes",
+    "workshop"
+  ],
+  "type": "module",
+  "bin": {
+    "jotter-mcp": "dist/main.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "npm run clean && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "start": "node dist/main.js",
+    "start:http": "node dist/main.js --http",
+    "dev": "tsx src/main.ts",
+    "dev:http": "tsx src/main.ts --http",
+    "inspect": "npm run build && npx -y @modelcontextprotocol/inspector@2.9.0 node dist/main.js",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "vitest": "5.0.5"
+  }
+}
